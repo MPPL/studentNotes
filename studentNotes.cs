@@ -47,8 +47,6 @@ public class App : Application
     static GridEl toolbar           = new GridEl(440, 80, 1, 3, new SolidColorBrush(SemiDarkGray), HorizontalAlignment.Center, VerticalAlignment.Center);
 
     // Elements
-    static DrawRect test_rect       = new DrawRect(70,70,Colors.Red);
-    static Text hello               = new Text("≡", false, 60);
     static nButton menu_button      = new nButton(50,50,new SolidColorBrush(NeonOrangeb),LeftBarMove,"≡");
 
     static nButton welcome          = new nButton(250,50, new SolidColorBrush(LeftBarDefault),OnWelcome,"Welcome");
@@ -68,8 +66,6 @@ public class App : Application
     static Text welcome_noteabove   = new Text("Current Number of Notes", true, 30);
     static Text welcometext         = new Text("Welcome", true, 100);
     static DropdownList dpl         = new DropdownList(490, 60, new SolidColorBrush(Colors.White), 20, ["Software engineering", "Mathematical Analysis", "Programming II"],[Select_a, Select_b, Select_c]);
-    
-    static bool text_switch         = false;
 
     static string notes_pref        = "Software_engineering_";
 
@@ -133,17 +129,6 @@ public class App : Application
         Darken.Visibility = Visibility.Hidden;
         Darken.AddChild(undarken.Inherit);
         Darken.SetZIndex(100);
-
-        test_rect.SetGridPos(1,1);
-        DoubleAnimation anim = new DoubleAnimation(0,100, TimeSpan.FromSeconds(2));
-        anim.RepeatBehavior = RepeatBehavior.Forever;
-        anim.AutoReverse = true;
-
-        hello.SetGridPos(0,1);
-        hello.SetGridColumnSpan(3);
-        hello.SetAlignment(TextAlignment.Center);
-        //hello.DebugBackgroundSwitch();
-
 
         Console.WriteLine(FilesPath.GetDirectoryName(System.Environment.ProcessPath));
         Directory.SetCurrentDirectory(FilesPath.GetDirectoryName(System.Environment.ProcessPath));
@@ -279,7 +264,6 @@ public class App : Application
         mainGrid.SetColumnMaxWidth(1, 200);
         mainGrid.SetColumnMaxWidth(4, 200);
         mainGrid.AddChild([LeftBar.GetGrid(), Darken.GetGrid(), welcomePage.GetGrid(), plansPage.GetGrid(), notesPage.GetGrid()]);
-        mainGrid.AddChild([test_rect.Inherit, hello.Inherit]);
 
         ResolveCurrentView();
 

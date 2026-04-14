@@ -707,17 +707,6 @@ public class ListEl : Element
         this.el.Background = brush;
     }
 
-    public void TestAnim(object sender, RoutedEventArgs e)
-    {
-        DoubleAnimation anim1 = new DoubleAnimation(360, 0, new Duration(TimeSpan.FromSeconds(1)));
-        anim1.RepeatBehavior = RepeatBehavior.Forever;
-        LinearMatrixAnimation anim2 = new LinearMatrixAnimation(new Matrix(1,1,1,1,0,0), new Matrix(1,1,1,1,0,0), new Duration(TimeSpan.FromSeconds(1)));
-        anim2.RepeatBehavior = RepeatBehavior.Forever;
-
-        this.AnimRotation(sender, e, anim1);
-        this.AnimTransform(sender, e, anim2);
-    }
-
     public void AnimColor(object sender, RoutedEventArgs e, ColorAnimation da)
     {
         this.el.Background.BeginAnimation(SolidColorBrush.ColorProperty, da);
@@ -753,7 +742,6 @@ public class DrawRect : Element
         this.el.Width = width;
         this.el.Height = height;
         this.el.Fill = new SolidColorBrush(color);
-        this.el.Loaded += Anim;
     }
 
     public void Rotate(double ang)
@@ -767,7 +755,7 @@ public class DrawRect : Element
         this.el.Loaded += foo;
     }
 
-    public void Anim(object sender, RoutedEventArgs e)
+    public void TestAnim(object sender, RoutedEventArgs e)
     {
         var anim1 = new DoubleAnimation(360, 0, new Duration(TimeSpan.FromSeconds(1)));
         anim1.RepeatBehavior = RepeatBehavior.Forever;
